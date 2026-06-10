@@ -9,9 +9,13 @@
 
         header { background: #1a6b3a; color: white; padding: 18px 30px; }
         header h1 { font-size: 22px; }
-        nav { background: #145230; padding: 10px 30px; display: flex; gap: 25px; }
+        nav { background: #145230; padding: 10px 30px; display: flex; gap: 25px; align-items: center; }
         nav a { color: white; text-decoration: none; font-weight: bold; font-size: 15px; }
         nav a:hover { text-decoration: underline; }
+        .nav-derecha { margin-left: auto; display: flex; align-items: center; gap: 15px; }
+        .btn-login { background: white; color: #1a6b3a; padding: 6px 16px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 14px; }
+        .btn-logout { background: #d9534f; color: white; padding: 6px 16px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 14px; }
+        .texto-admin { color: #90EE90; font-size: 13px; }
 
         .contenedor { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
 
@@ -22,13 +26,11 @@
         .card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); margin-bottom: 20px; }
         h2 { color: #1a6b3a; margin-bottom: 20px; font-size: 20px; }
 
-        /* Stats inicio */
         .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
         .stat { background: white; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
         .stat .numero { font-size: 36px; font-weight: bold; color: #1a6b3a; }
         .stat .label  { font-size: 13px; color: #888; margin-top: 4px; }
 
-        /* Filtros */
         .filtros { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; align-items: center; }
         .filtros input, .filtros select { padding: 9px 13px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
         .filtros input { flex: 1; min-width: 180px; }
@@ -39,7 +41,6 @@
         .btn-nuevo { display: inline-block; margin-bottom: 20px; padding: 9px 18px; background: #1a6b3a; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 14px; }
         .btn-nuevo:hover { background: #145230; }
 
-        /* Grid productos */
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
         .tarjeta { background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; text-align: center; }
         .tarjeta img { width: 100%; height: 140px; object-fit: cover; background: #eee; }
@@ -49,14 +50,12 @@
         .tarjeta .stock { font-size: 12px; color: #888; margin-bottom: 10px; }
         .tarjeta-acciones { display: flex; gap: 6px; justify-content: center; }
 
-        /* Tabla clientes / compras */
         table { width: 100%; border-collapse: collapse; font-size: 14px; }
         th { background: #f0f0f0; padding: 11px 12px; text-align: left; color: #555; font-weight: bold; border-bottom: 2px solid #ddd; }
         td { padding: 11px 12px; border-bottom: 1px solid #eee; vertical-align: middle; }
         tr:hover td { background: #fafafa; }
         .sin-resultados { text-align: center; color: #999; padding: 40px; }
 
-        /* Badges */
         .badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: bold; margin-bottom: 6px; }
         .badge-abarrotes { background: #e8f5e9; color: #2e7d32; }
         .badge-bebidas    { background: #e3f2fd; color: #1565c0; }
@@ -64,13 +63,11 @@
         .badge-limpieza   { background: #fce4ec; color: #880e4f; }
         .badge-snacks     { background: #f3e5f5; color: #6a1b9a; }
 
-        /* Botones acción */
         .btn-editar   { padding: 5px 11px; background: #f0ad4e; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; text-decoration: none; }
         .btn-eliminar { padding: 5px 11px; background: #d9534f; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
         .btn-editar:hover   { background: #e09400; }
         .btn-eliminar:hover { background: #c9302c; }
 
-        /* Formulario */
         .formulario { max-width: 500px; }
         .campo { margin-bottom: 18px; }
         .campo label { display: block; font-size: 14px; font-weight: bold; color: #555; margin-bottom: 6px; }
@@ -81,6 +78,9 @@
         .btn-guardar { padding: 10px 24px; background: #1a6b3a; color: white; border: none; border-radius: 6px; font-size: 15px; font-weight: bold; cursor: pointer; }
         .btn-guardar:hover { background: #145230; }
         .btn-cancelar { margin-left: 12px; padding: 10px 18px; background: #eee; color: #555; border: none; border-radius: 6px; font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; }
+
+        .login-box { max-width: 380px; margin: 60px auto; background: white; padding: 35px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .login-box h2 { text-align: center; margin-bottom: 25px; }
 
         footer { text-align: center; padding: 15px; background: #eee; font-size: 13px; color: #777; margin-top: 40px; }
     </style>
@@ -93,6 +93,14 @@
     <a href="/productos">Productos</a>
     <a href="/clientes">Clientes</a>
     <a href="/compras">Compras</a>
+    <div class="nav-derecha">
+        {% if admin %}
+            <span class="texto-admin">👤 Admin</span>
+            <a href="/logout" class="btn-logout">Cerrar sesión</a>
+        {% else %}
+            <a href="/login" class="btn-login">Iniciar sesión</a>
+        {% endif %}
+    </div>
 </nav>
 
 <div class="contenedor">
@@ -103,8 +111,25 @@
         {% endfor %}
     {% endwith %}
 
-    <!-- ══ INICIO ══ -->
-    {% if pagina == "inicio" %}
+    <!-- LOGIN -->
+    {% if pagina == "login" %}
+    <div class="login-box">
+        <h2>Iniciar Sesión</h2>
+        <form method="POST">
+            <div class="campo">
+                <label>Usuario</label>
+                <input type="text" name="usuario" required>
+            </div>
+            <div class="campo">
+                <label>Contraseña</label>
+                <input type="password" name="password" required>
+            </div>
+            <button type="submit" class="btn-guardar" style="width:100%">Entrar</button>
+        </form>
+    </div>
+
+    <!-- INICIO -->
+    {% elif pagina == "inicio" %}
     <div class="stats">
         <div class="stat"><div class="numero">{{ total_productos }}</div><div class="label">Productos</div></div>
         <div class="stat"><div class="numero">{{ total_clientes }}</div><div class="label">Clientes</div></div>
@@ -123,7 +148,7 @@
         </table>
     </div>
 
-    <!-- ══ PRODUCTOS ══ -->
+    <!-- PRODUCTOS -->
     {% elif pagina == "productos" %}
     <div class="card">
         <h2>Productos</h2>
@@ -138,7 +163,9 @@
             <button type="submit">Buscar</button>
             {% if busqueda or categoria_sel %}<a href="/productos" class="limpiar">✕ Limpiar</a>{% endif %}
         </form>
-        <a href="/productos/agregar" class="btn-nuevo">+ Nuevo Producto</a>
+        {% if admin %}
+            <a href="/productos/agregar" class="btn-nuevo">+ Nuevo Producto</a>
+        {% endif %}
         {% if productos %}
         <div class="grid">
             {% for p in productos %}
@@ -149,10 +176,12 @@
                     <h3>{{ p.nombre }}</h3>
                     <div class="precio">S/ {{ "%.2f"|format(p.precio) }}</div>
                     <div class="stock">Stock: {{ p.stock }}</div>
+                    {% if admin %}
                     <div class="tarjeta-acciones">
                         <a href="/productos/editar/{{ p.id }}" class="btn-editar">✏ Editar</a>
                         <button class="btn-eliminar" onclick="if(confirm('¿Eliminar {{ p.nombre }}?')) window.location='/productos/eliminar/{{ p.id }}'">🗑 Eliminar</button>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
@@ -162,7 +191,7 @@
         {% endif %}
     </div>
 
-    <!-- ══ FORM PRODUCTO ══ -->
+    <!-- FORM PRODUCTO -->
     {% elif pagina == "form_producto" %}
     <div class="card">
         <h2>{% if accion == "editar" %}Editar Producto{% else %}Agregar Producto{% endif %}</h2>
@@ -198,7 +227,7 @@
         </form>
     </div>
 
-    <!-- ══ CLIENTES ══ -->
+    <!-- CLIENTES -->
     {% elif pagina == "clientes" %}
     <div class="card">
         <h2>Clientes</h2>
@@ -207,11 +236,13 @@
             <button type="submit">Buscar</button>
             {% if busqueda %}<a href="/clientes" class="limpiar">✕ Limpiar</a>{% endif %}
         </form>
-        <a href="/clientes/agregar" class="btn-nuevo">+ Nuevo Cliente</a>
+        {% if admin %}
+            <a href="/clientes/agregar" class="btn-nuevo">+ Nuevo Cliente</a>
+        {% endif %}
         {% if clientes %}
         <table>
             <thead>
-                <tr><th>#</th><th>Nombre</th><th>DNI</th><th>Teléfono</th><th>Acciones</th></tr>
+                <tr><th>#</th><th>Nombre</th><th>DNI</th><th>Teléfono</th>{% if admin %}<th>Acciones</th>{% endif %}</tr>
             </thead>
             <tbody>
                 {% for c in clientes %}
@@ -220,10 +251,12 @@
                     <td>{{ c.nombre }}</td>
                     <td>{{ c.dni }}</td>
                     <td>{{ c.telefono }}</td>
+                    {% if admin %}
                     <td>
                         <a href="/clientes/editar/{{ c.id }}" class="btn-editar">✏ Editar</a>
                         <button class="btn-eliminar" onclick="if(confirm('¿Eliminar a {{ c.nombre }}?')) window.location='/clientes/eliminar/{{ c.id }}'">🗑 Eliminar</button>
                     </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
@@ -233,7 +266,7 @@
         {% endif %}
     </div>
 
-    <!-- ══ FORM CLIENTE ══ -->
+    <!-- FORM CLIENTE -->
     {% elif pagina == "form_cliente" %}
     <div class="card">
         <h2>{% if accion == "editar" %}Editar Cliente{% else %}Agregar Cliente{% endif %}</h2>
@@ -255,15 +288,17 @@
         </form>
     </div>
 
-    <!-- ══ COMPRAS ══ -->
+    <!-- COMPRAS -->
     {% elif pagina == "compras" %}
     <div class="card">
         <h2>Compras Registradas</h2>
-        <a href="/compras/nueva" class="btn-nuevo">+ Nueva Compra</a>
+        {% if admin %}
+            <a href="/compras/nueva" class="btn-nuevo">+ Nueva Compra</a>
+        {% endif %}
         {% if compras %}
         <table>
             <thead>
-                <tr><th>#</th><th>Cliente</th><th>Producto</th><th>Cantidad</th><th>Total</th><th>Acción</th></tr>
+                <tr><th>#</th><th>Cliente</th><th>Producto</th><th>Cantidad</th><th>Total</th>{% if admin %}<th>Acción</th>{% endif %}</tr>
             </thead>
             <tbody>
                 {% for c in compras %}
@@ -273,9 +308,11 @@
                     <td>{{ productos_dict[c.producto_id].nombre if c.producto_id in productos_dict else "—" }}</td>
                     <td>{{ c.cantidad }}</td>
                     <td>S/ {{ "%.2f"|format(c.total) }}</td>
+                    {% if admin %}
                     <td>
                         <button class="btn-eliminar" onclick="if(confirm('¿Eliminar esta compra?')) window.location='/compras/eliminar/{{ c.id }}'">🗑 Eliminar</button>
                     </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
@@ -285,7 +322,7 @@
         {% endif %}
     </div>
 
-    <!-- ══ FORM COMPRA ══ -->
+    <!-- FORM COMPRA -->
     {% elif pagina == "form_compra" %}
     <div class="card">
         <h2>Registrar Nueva Compra</h2>
