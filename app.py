@@ -327,5 +327,51 @@ def confirmar_compra():
     flash("¡Compra realizada con éxito!", "success")
     return redirect(url_for("inicio"))
 
+# ── DASHBOARD ─────────────────────────────────────────────
+@app.route("/dashboard")
+def dashboard():
+    if not es_admin():
+        flash("Acceso solo para admin.", "danger")
+        return redirect(url_for("login"))
+    productos  = cargar(ARCHIVO_PRODUCTOS, PRODUCTOS_INICIALES)
+    compras    = cargar(ARCHIVO_COMPRAS)
+    clientes   = cargar(ARCHIVO_CLIENTES)
+    categorias = ["abarrotes", "bebidas", "lacteos", "limpieza", "snacks"]
+
+    ventas_cat   = {c: 0 for c in categorias}
+    ingresos_cat = {c: 0.0 for c in categorias}
+    prod_dict    = {p["id"]: p for p in productos}
+    prod_vendidos = {}
+
+    for compra in compras:
+        p = prod_dict.get(compra["producto_id"])
+        if p:
+            cat = p.get("categoria", "otros")
+            if cat in ventas_cat:
+                ventas_cat[cat]   += compra["cantidad"]
+                ingresos_cat[cat] += compra["total"]
+            pid = compra["producto_id"]
+            prod_vendidos[pid] = prod_vendidos.get(pid, 0) + compra["cantidad"]
+
+    top = sorted(prod_vendidos.items(), key=lambda x: x[1], reverse=True)[:5]
+    top_productos = [{"nombre": prod_dict[pid]["nombre"], "vendidos": cant} for pid, cant in top if pid in prod_dict]
+
+    stock_cat = {c: 0 for c in categorias}
+    for p in productos:
+        cat = p.get("categoria", "otros")
+        if cat in stock_cat:
+            stock_cat[cat] += p["stock"]
+
+    return render_template("base.html", pagina="dashboard",
+                           total_productos=len(productos),
+                           total_clientes=len(clientes),
+                           total_compras=len(compras),
+                           categorias_labels=categorias,
+                           categorias_data=[ventas_cat[c] for c in categorias],
+                           ingresos_data=[round(ingresos_cat[c], 2) for c in categorias],
+                           stock_data=[stock_cat[c] for c in categorias],
+                           top_productos=top_productos,
+                           admin=es_admin())
+
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(host="0.0.0.0", port=5000, debug=True)
