@@ -193,7 +193,7 @@
 <body>
 
 <header>
-    <div class="logo">🛒 Minimarket <span>Margot</span></div>
+    <div class="logo"> Minimarket <span></span></div>
     <nav>
         <a href="/">Inicio</a>
         <a href="/productos">Productos</a>
@@ -205,7 +205,7 @@
     </nav>
     <div class="nav-right">
         {% if admin %}
-            <span class="tag-admin">👤 Admin</span>
+            <span class="tag-admin"> Alessandro</span>
             <a href="/logout" class="btn-n btn-logout">Salir</a>
         {% else %}
             <a href="/carrito" class="btn-n btn-carrito">🛒 Carrito <span class="badge-num">{{ carrito_count or 0 }}</span></a>
@@ -251,38 +251,38 @@
         <h1>¡Bienvenido a Minimarket Margot!</h1>
         <p>Los mejores productos frescos y de calidad, todos los días para ti.</p>
         <div class="hero-btns">
-            <a href="/productos" class="btn-hero-main">🛍️ Ver Productos</a>
+            <a href="/productos" class="btn-hero-main"> Ver Productos</a>
             {% if not admin %}
-            <a href="/carrito" class="btn-hero-sec">🛒 Mi Carrito ({{ carrito_count or 0 }})</a>
+            <a href="/carrito" class="btn-hero-sec"> Mi Carrito ({{ carrito_count or 0 }})</a>
             {% else %}
-            <a href="/dashboard" class="btn-hero-sec">📊 Ver Dashboard</a>
+            <a href="/dashboard" class="btn-hero-sec"> Ver Dashboard</a>
             {% endif %}
         </div>
     </div>
     <div class="stats">
         <div class="stat">
-            <div class="stat-icon verde">📦</div>
+            <div class="stat-icon verde"></div>
             <div class="stat-info"><div class="numero">{{ total_productos }}</div><div class="label">Productos disponibles</div></div>
         </div>
         <div class="stat">
-            <div class="stat-icon azul">👥</div>
+            <div class="stat-icon azul"></div>
             <div class="stat-info"><div class="numero">{{ total_clientes }}</div><div class="label">Clientes registrados</div></div>
         </div>
         <div class="stat">
-            <div class="stat-icon naranja">🧾</div>
+            <div class="stat-icon naranja"></div>
             <div class="stat-info"><div class="numero">{{ total_compras }}</div><div class="label">Compras realizadas</div></div>
         </div>
     </div>
     <div class="info-grid">
         <div class="info-card">
-            <h3>🕐 Horarios de atención</h3>
+            <h3> Horarios de atención</h3>
             <div class="horario-row"><span>Lunes a Viernes</span><span>8:00 am – 9:00 pm</span></div>
             <div class="horario-row"><span>Sábados</span><span>8:00 am – 10:00 pm</span></div>
             <div class="horario-row"><span>Domingos</span><span>8:00 am – 10:00 pm</span></div>
         </div>
         <div class="info-card">
-            <h3>📞 Contacto</h3>
-            <div class="horario-row"><span>Teléfono</span><span>123 456 789</span></div>
+            <h3> Contacto</h3>
+            <div class="horario-row"><span>Teléfono</span><span> 967 360 241</span></div>
             <div class="horario-row"><span>Correo</span><span>margot@gmail.com</span></div>
             <div class="horario-row"><span>Dirección</span><span>Lima, Perú</span></div>
         </div>
@@ -290,29 +290,29 @@
 
     {% elif pagina == "dashboard" %}
     <div style="margin-bottom:20px;">
-        <h2 style="font-size:22px; font-weight:800; color:#1a6b3a;">📊 Dashboard</h2>
+        <h2 style="font-size:22px; font-weight:800; color:#1a6b3a;"> Dashboard</h2>
     </div>
     <div class="stats">
         <div class="stat">
-            <div class="stat-icon verde">📦</div>
+            <div class="stat-icon verde"></div>
             <div class="stat-info"><div class="numero">{{ total_productos }}</div><div class="label">Productos</div></div>
         </div>
         <div class="stat">
-            <div class="stat-icon azul">👥</div>
+            <div class="stat-icon azul"></div>
             <div class="stat-info"><div class="numero">{{ total_clientes }}</div><div class="label">Clientes</div></div>
         </div>
         <div class="stat">
-            <div class="stat-icon naranja">🧾</div>
+            <div class="stat-icon naranja"></div>
             <div class="stat-info"><div class="numero">{{ total_compras }}</div><div class="label">Compras</div></div>
         </div>
     </div>
     <div class="dashboard-grid">
         <div class="dash-card">
-            <h3>📈 Ventas por categoría</h3>
+            <h3> Ventas por categoría</h3>
             <div class="chart-container"><canvas id="chartCategorias"></canvas></div>
         </div>
         <div class="dash-card">
-            <h3>🏆 Productos más vendidos</h3>
+            <h3> Productos más vendidos</h3>
             {% for item in top_productos %}
             <div class="top-item">
                 <div class="top-rank {% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% elif loop.index == 3 %}bronze{% endif %}">{{ loop.index }}</div>
@@ -326,11 +326,11 @@
     </div>
     <div class="dashboard-grid">
         <div class="dash-card">
-            <h3>💰 Ingresos por categoría (S/)</h3>
+            <h3> Ingresos por categoría (S/)</h3>
             <div class="chart-container"><canvas id="chartIngresos"></canvas></div>
         </div>
         <div class="dash-card">
-            <h3>📦 Stock por categoría</h3>
+            <h3>Stock por categoría</h3>
             <div class="chart-container"><canvas id="chartStock"></canvas></div>
         </div>
     </div>
@@ -356,11 +356,11 @@
     {% elif pagina == "productos" %}
     <div class="card">
         <div class="card-header">
-            <h2>🛍️ Productos</h2>
+            <h2> Productos</h2>
             {% if admin %}<a href="/productos/agregar" class="btn-nuevo">+ Nuevo Producto</a>{% endif %}
         </div>
         <form class="filtros" method="GET" action="/productos">
-            <input type="text" name="q" placeholder="🔍 Buscar producto..." value="{{ busqueda }}">
+            <input type="text" name="q" placeholder=" Buscar producto..." value="{{ busqueda }}">
             <select name="categoria">
                 <option value="">Todas las categorías</option>
                 {% for cat in categorias %}
@@ -379,11 +379,11 @@
                     <span class="badge badge-{{ p.categoria }}">{{ p.categoria }}</span>
                     <h3>{{ p.nombre }}</h3>
                     <div class="precio">S/ {{ "%.2f"|format(p.precio) }}</div>
-                    <div class="stock">📦 Stock: {{ p.stock }}</div>
+                    <div class="stock">Stock: {{ p.stock }}</div>
                     <div class="tarjeta-acciones">
                         {% if admin %}
                             <a href="/productos/editar/{{ p.id }}" class="btn-editar">✏ Editar</a>
-                            <button class="btn-eliminar" onclick="if(confirm('¿Eliminar {{ p.nombre }}?')) window.location='/productos/eliminar/{{ p.id }}'">🗑</button>
+                            <button class="btn-eliminar" onclick="if(confirm('¿Eliminar {{ p.nombre }}?')) window.location='/productos/eliminar/{{ p.id }}'"></button>
                         {% else %}
                             {% if p.stock > 0 %}
                                 <a href="/carrito/agregar/{{ p.id }}" class="btn-agregar">🛒 Agregar</a>
@@ -397,13 +397,13 @@
             {% endfor %}
         </div>
         {% else %}
-        <p class="sin-resultados">😕 No se encontraron productos.</p>
+        <p class="sin-resultados"> No se encontraron productos.</p>
         {% endif %}
     </div>
 
     {% elif pagina == "form_producto" %}
     <div class="card">
-        <h2>{% if accion == "editar" %}✏️ Editar Producto{% else %}➕ Agregar Producto{% endif %}</h2>
+        <h2>{% if accion == "editar" %} Editar Producto{% else %} Agregar Producto{% endif %}</h2>
         <form class="formulario" method="POST" style="margin-top:20px;">
             <div class="campo"><label>Nombre</label><input type="text" name="nombre" required value="{{ producto.nombre if producto else '' }}"></div>
             <div class="campo"><label>Precio (S/)</label><input type="number" name="precio" step="0.01" min="0" required value="{{ producto.precio if producto else '' }}"></div>
